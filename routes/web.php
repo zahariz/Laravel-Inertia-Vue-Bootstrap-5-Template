@@ -15,9 +15,6 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia('Home');
-});
+    return Inertia::render('Auth/Login');
+})->middleware('guest');
 
-Route::get('/login', function(){
-    return Inertia('Auth/Login');
-});
