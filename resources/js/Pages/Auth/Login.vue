@@ -65,10 +65,7 @@
     import LayoutAuth from '../../Layouts/Auth.vue';
     import { reactive } from 'vue';
 
-    import {
-        Head,
-        Link
-    } from '@inertiajs/vue3';
+    import { Head, Link, router } from '@inertiajs/vue3';
 
     export default {
         layout: LayoutAuth,
@@ -91,7 +88,7 @@
             const submit = () => {
 
                 //send data to server
-                Inertia.post('/login', {
+                router.post('/login', {
 
                     //data
                     email: form.email,

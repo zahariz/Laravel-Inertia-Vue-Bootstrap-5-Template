@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -17,4 +18,15 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Auth/Login');
 })->middleware('guest');
+
+// prefix apps
+Route::prefix('apps')->group(function () {
+
+    // middleware auth
+    Route::group(['middleware' => ['auth']], function () {
+        // route dashboard
+        Route::get('dashboard', DashboardController::class)->name('apps.dashboard');
+    });
+});
+
 
