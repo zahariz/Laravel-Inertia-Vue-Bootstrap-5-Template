@@ -26,6 +26,13 @@ Route::prefix('apps')->group(function () {
     Route::group(['middleware' => ['auth']], function () {
         // route dashboard
         Route::get('dashboard', DashboardController::class)->name('apps.dashboard');
+        // route paket
+        Route::get('/pakets', function () {
+            return Inertia::render('Apps/Pakets/Index');
+        });
+        Route::get('/pakets/create', function () {
+            return Inertia::render('Apps/Pakets/Create');
+        });
     });
 });
 
